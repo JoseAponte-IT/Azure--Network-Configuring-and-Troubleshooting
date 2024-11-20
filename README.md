@@ -150,8 +150,80 @@ This project demonstrates how to use Microsoft Azure for network troubleshooting
 
 ![image](https://github.com/user-attachments/assets/2f995d5d-2d57-45f6-a48e-e66022f901b6)
 
-<h2>Step 4:</h2>
+<h2>Step 4: RDP into the Windows 10 VM and install Wireshark</h2>
 
+- Return to the Virtual Machine Dashboard in the Azure portal
+
+![image](https://github.com/user-attachments/assets/b6a3858b-1275-43ee-88ba-5179fc32ce0d)
+
+- Jot down the Public IP adresses of the VM's
+
+![image](https://github.com/user-attachments/assets/4cdd5f04-1314-4984-932b-6fa82d02ff84)
+
+- If on Windows press Windows key -> Open RDP If on MAC download RDP program in APP store and put in the IP adress of the Windows VM
+
+![image](https://github.com/user-attachments/assets/9b260710-4d1f-4651-8753-5f070c26b954)
+
+- Enter the Log in credentials and log in to the machine
+
+![image](https://github.com/user-attachments/assets/db0f4e46-afca-47c4-8273-2efe9ed54ed3)
+
+- Go to Microsoft Edge and search Wireshark and download the x64 option
+
+![image](https://github.com/user-attachments/assets/9d706e04-5697-4090-ae84-5bc115d83651)
+
+- Search Wireshark in the windows search bar on the bottom left and open the program
+
+- Select the Ethernet option [This shows you all the packets of data being transfered throughout the network ]
+
+![image](https://github.com/user-attachments/assets/2a627af3-831c-4174-9883-77dc3a85efd1)
+
+- Type in icmp into the bar on the top to only focus on icmp data flowing throughout the network
+
+![image](https://github.com/user-attachments/assets/e0b008ef-3b26-4bf5-9e1d-35fa7e8424e9)
+
+- Search for PowerShell in the WIndows search bar on the bottom left and open the Program
+
+![image](https://github.com/user-attachments/assets/37f66194-d94a-4ce9-bb72-17b327e9de3a)
+
+- Enter the command ping -t 10.0.0.5 [10.0.0.5 is the Linux machines Local IP adress we jotted down and we are using the ping coommmnd to check for connectivity between the machines while the -t is stating keep repeatedly pinging unless told not to with the command crtl+c ]
+
+![image](https://github.com/user-attachments/assets/83940d61-6b60-4b4e-b6ab-74c1f5e4854f)
+
+- Observe the traffic through the Wireshark Program
+
+![image](https://github.com/user-attachments/assets/f9889636-7bba-4168-8345-b78ea739009d)
+
+- Go back to the Azure portal and configure a NSG Rule (Firewall protocol) to deny all incoming ICMP traffic
+
+![image](https://github.com/user-attachments/assets/5d927f54-8195-45ba-b39e-73ebb76b12f8)
+
+![image](https://github.com/user-attachments/assets/01e3152b-882e-49e2-b785-523839e5a535)
+
+- Return to the windows vm through RDP and observe the traffic on Wireshark[Ping request should be timing out and there is only request traffic visible since we configured the linux vm to deny all inbound ping (ICMP) traffic]
+
+![image](https://github.com/user-attachments/assets/ccd4e64d-e23c-473e-916f-cf42e2e3d629)
+
+- Go back to the Azure portal and reconfigure the Linux VM's NSG (Firewall protocols) back to allowing Icmp traffic
+
+-Select networking -> Network Settings -> then select the Network secuirty group option
+
+ - Find the inbound security rule we configured and remove it 
+
+![image](https://github.com/user-attachments/assets/8f536f1b-df69-4bf7-a9c2-897e9c986487)
+
+![image](https://github.com/user-attachments/assets/efa68286-6f63-4d45-a844-1e59d8879531)
+
+
+- Return to the Windows VM and observe the traffic return back to the way it was both Request and Recieveing data packets are now visible in the network now that the
+
+![image](https://github.com/user-attachments/assets/bd912225-95b9-41c8-9b75-f1bb0c7f6c11)
+
+- Run the ctrl c command in PowerShell to stop the pings
+
+![image](https://github.com/user-attachments/assets/9b1d88ff-da86-4d28-b9e6-1a0214c985e2)
+
+- 🎉Congrats, You’ve successfully configured a Network Security Group (NSG) and monitored its impact on the network by analyzing individual ICMP (ping) packets using Wireshark. The traffic was generated through PowerShell commands, specifically using ping -t to simulate continuous ICMP requests.
 
 
 
