@@ -172,9 +172,11 @@ This project demonstrates how to use Microsoft Azure for network troubleshooting
 
 ![image](https://github.com/user-attachments/assets/9d706e04-5697-4090-ae84-5bc115d83651)
 
+<h2>Step 5: Generate and monitor ICMP Traffic over the Network and Configure A Firewall</h2>
+
 - Search Wireshark in the windows search bar on the bottom left and open the program
 
-- Select the Ethernet option [This shows you all the packets of data being transfered throughout the network ]
+- Select the Ethernet option [This shows you all the packets of data being transfered throughout the network through the NIC ]
 
 ![image](https://github.com/user-attachments/assets/2a627af3-831c-4174-9883-77dc3a85efd1)
 
@@ -224,6 +226,76 @@ This project demonstrates how to use Microsoft Azure for network troubleshooting
 ![image](https://github.com/user-attachments/assets/9b1d88ff-da86-4d28-b9e6-1a0214c985e2)
 
 - 🎉Congrats, You’ve successfully configured a Network Security Group (NSG) and monitored its impact on the network by analyzing individual ICMP (ping) packets using Wireshark. The traffic was generated through PowerShell commands, specifically using ping -t to simulate continuous ICMP requests.
+
+<h2>Step 6: Observe SSH traffic</h2>
+
+- Log back in to the windows VM -> boot up Wireshark and filter for ssh traffic only
+
+![image](https://github.com/user-attachments/assets/a1cb9329-69f6-4eb4-b057-f4504bd0341c)
+
+- Open Powershell and type in the command ssh "insert username of linux vm here"@"private IP address here" to connect and generate SSH traffic so it can be visible in Wireshark
+
+![image](https://github.com/user-attachments/assets/0a855084-f98e-4dca-8a17-c29999cc7f67)
+
+- Type in password it will be invisible for security reasons
+
+![image](https://github.com/user-attachments/assets/3f4e0525-521e-4285-8d89-d729ca491b87)
+
+![image](https://github.com/user-attachments/assets/9afde136-6d1d-49e6-badf-8df44f003889)
+
+-Observe the traffic in Wireshark [notic how anything you type in the console is counted as traffic, its because eveything you do while in a SSH connection is sending encrypted packets over the network ]
+
+![image](https://github.com/user-attachments/assets/59318995-36e7-46c5-a7ba-86cc946e0cdd)
+
+- Type exit and press enter to stop the SSH connection
+
+![image](https://github.com/user-attachments/assets/734cf815-8006-41b3-ba1f-bd29b6e5d93c)
+
+<h2>Step 7: Observe DHCP Traffic</h2>
+
+- Log back in to the windows VM -> boot up Wireshark and filter for DHCP traffic only
+
+- ![image](https://github.com/user-attachments/assets/3d44c79c-1230-4bb2-bcd1-383bf7b16a62)
+
+-  Open Powershell and type in the command ipcongfig /renew to renew your IP address generating DHCP traffic for you to observe in Wireshark [your windows vm may relog/restart since it wont have an IP address temporaily but that is fine as that command releases the current IP address and gives it another]
+
+![image](https://github.com/user-attachments/assets/7804d7df-74f3-43b0-8d02-145aefea0926)
+
+![image](https://github.com/user-attachments/assets/df3dc9ea-c438-4025-8902-bf5ca5cca74c)
+
+
+
+<h2>Step 8: Observe DNS Traffic</h2>
+
+- Log back in to the windows VM -> boot up Wireshark and filter for DNS traffic only
+
+![image](https://github.com/user-attachments/assets/b83b6562-5440-44a8-99fe-a647265766fa)
+
+ -  Open Powershell and type in the command nslookup google.com to generate DNS traffic for you to observe in Wireshark
+
+![image](https://github.com/user-attachments/assets/9e3a9c6b-2d9c-4254-8bfb-7280f03e4a1d)
+
+![image](https://github.com/user-attachments/assets/a3732cee-82a7-4b2d-abc7-1eee51c188b4)
+
+<h2>Step 9: Observe RDP Traffic</h2>
+
+- Log back in to the windows VM -> boot up Wireshark and filter for RDP or tcp.port == 3389 traffic only
+
+   - Observe the traffic it should be spamming non-stop since its in constant use since you are currently using it to remote in the windows VM
+
+![image](https://github.com/user-attachments/assets/4d6a409d-c1f8-48ca-bf64-853b19f58d31)
+
+<h2>Step 10: LAB Clean Up</h2>
+
+- Close your Remote Desktop connection
+ 
+-  Delte Resource groups
+
+![image](https://github.com/user-attachments/assets/b632553f-5ad3-4609-bb52-8a62c6689398)
+
+![image](https://github.com/user-attachments/assets/977b4eaf-4800-4081-84aa-7c3e08e2a536)
+
+
 
 
 
