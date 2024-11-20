@@ -295,7 +295,17 @@ This project demonstrates how to use Microsoft Azure for network troubleshooting
 
 ![image](https://github.com/user-attachments/assets/977b4eaf-4800-4081-84aa-7c3e08e2a536)
 
+# 🎉Congratulations
 
+<h2>We Have Successfully:</h2>
 
+- Created and configured a Network Security Group (NSG) to manage network traffic.
 
+- Deployed Virtual Machines (VMs) on Microsoft Azure and set up a Virtual Network to connect them.
+- Generated network traffic using PowerShell commands like ping -t, ssh, and others.
 
+- Analyzed network traffic with Wireshark, inspecting specific protocols (ICMP, DNS, DHCP, etc.).
+
+- Configured and tested NSG rules to allow and deny specific traffic based on protocols and ports.
+
+# That Concludes this lab  <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="30px"/>
