@@ -7,6 +7,8 @@ This project demonstrates how to use Microsoft Azure for network troubleshooting
 
 - Azure Portal & Azure CLI
 
+- Virtual Machines
+
 - Powershell
 
 - Wireshark
